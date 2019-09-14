@@ -1,0 +1,33 @@
+{
+  "name": "weather-app",
+  "version": "1.0.0",
+  "description": "Weather app project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fnando-gomez/weather-app_projekt.git"
+  },
+  "keywords": [
+    "project",
+    "fullstack",
+    "weather"
+  ],
+  "author": "Fernando Gómez Peregrina",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fnando-gomez/weather-app_projekt/issues"
+  },
+  "homepage": "https://github.com/fnando-gomez/weather-app_projekt#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "handlebars": "^4.2.0",
+    "jquery": "^3.4.1",
+    "moment": "^2.24.0",
+    "mongoose": "^5.7.1",
+    "request": "^2.88.0"
+  }
+}
