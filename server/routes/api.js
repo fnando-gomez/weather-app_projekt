@@ -1,17 +1,13 @@
 const express = require ('express')
-const mongoose = require ('mongoose')
 const router = express.Router()
-const City = require ('../models/city')
 const request = require ('request')
 const moment = require ('moment')
+const City = require ('../models/city')
 
-
-
-const apikey = "c57023029a33f002233b36a4752efb77"//API access Key
-
+//Coonecting & getting useful data from the API(weatherstack) 
 router.get('/city/:cityName', function (req, res) {
     city = req.params.cityName
-
+    const apikey = "c57023029a33f002233b36a4752efb77"//API access Key
     let apiAdd = `http://api.weatherstack.com/current?access_key=${apikey}&query=${city}`
     request(apiAdd,function(error, response, body){
         let fulldataCity = JSON.parse(body)
@@ -24,19 +20,29 @@ router.get('/city/:cityName', function (req, res) {
             condition: fulldataCity.current.weather_descriptions[0],
             conditionPic: fulldataCity.current.weather_icons[0]
         })
-        
-        dataCity.save()
-        
         res.send(dataCity)//Inside the request
-
     })    
 })
 
 router.get('/cities', function (req, res) {
     City.find({}, function(err, cities){
         res.send(cities) 
-    })
-  
+    }) 
 })
+
+router.post('/city', function (req, res,) {
+    let {name, updateAt, temperature, humidity, feelslike, condition, conditionPic} = req.body
+    let dataCity = new City ({name, updateAt, temperature, humidity, feelslike, condition, conditionPic })
+    
+    dataCity.save()
+    res.send('City saved in the DB')
+})
+
+router.delete('/city/:cityName', function (req, res) {
+    citytodelete = req.params.cityName
+    City.findOneAndDelete({name:citytodelete}).exec(console.log("City removed"))
+  res.send('City removed from the DB')
+})
+
 
 module.exports = router 
