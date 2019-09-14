@@ -4,10 +4,11 @@ const port = 1571
 
 const mongoose = require ('mongoose')
 const bodyParser = require ('body-parser')
-const request = require ('request')
+
 
 const api =require ("./server/routes/api")
 
+mongoose.connect("mongodb://localhost/citiesDB", {useNewUrlParser:true, useFindAndModify:false, useUnifiedTopology: true },() => console.log ("DB-connection-up"))
 //Serving files
 
 
@@ -15,7 +16,6 @@ server.use(bodyParser.urlencoded({ extended: false }))
 server.use(bodyParser.json())
 
 //Mongoose Setup
-mongoose.connect("mongodb:localhost/citiesDB", {useNewUrlParser:true, useFindAndModify:false},() => console.log ("DB-connection-up"))
 
 server.use('/', api)
 
