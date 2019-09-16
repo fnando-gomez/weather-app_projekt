@@ -14,7 +14,7 @@
         <h1>Weather - app</h1>
         <div id="search_area">
             <input type="text" size="25" id="city_search" name="Search" placeholder="City">
-            <button id= "searchButton">Get Weather</button>
+            <button onclick=handleSearch()>Get Weather</button>
         </div>  
 
         <div id="container"></div>
@@ -28,13 +28,15 @@
         <script id= "cities_template" type="text/x-handlebars-template">
             {{#each cityData}}
             <div class="city">
-                <h4 class="c_Name">{{name}}</h4>
+                <h4 class="name">{{name}}</h4>
                 <img src={{conditionPic}} alt="Weather now">
-                <h4 class="temp">Temperature:{{temperature}}</h4>
-                <h4 class="humidity">Humidity:{{humidity}}</h4>
+                <h4 class="temp">Temperature:{{temperature}} º</h4>
+                <h4 class="humidity">Humidity:{{humidity}}%</h4>
                 <h4 class="condition">Actual condition:{{condition}}</h4>
-                <h4 class="thermal">Thermal sensation:{{feelslike}}</h4>
-                <h4 class="updated">Last update{{updateAt}}</h4>
+                <h4 class="thermal">Thermal sensation:{{feelslike}}º</h4>
+                <h4 class="updated">Last update: {{updateAt}}</h4>
+                <button class="saveButton">Save</button>
+                <button class="deleteButton">Delete</button>
             </div>
             {{/each}}
         

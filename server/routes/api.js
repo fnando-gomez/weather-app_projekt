@@ -13,7 +13,7 @@ router.get('/city/:cityName', function (req, res) {
         let fulldataCity = JSON.parse(body)
         let dataCity = {
             name: fulldataCity.location.name,
-            updateAt: moment().format(`LLLL`),
+            updateAt: new Date,
             temperature: fulldataCity.current.temperature,
             humidity: fulldataCity.current.humidity,
             feelslike:fulldataCity.current.feelslike,
