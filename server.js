@@ -10,7 +10,7 @@ server.use(bodyParser.urlencoded({ extended: false }))
 server.use(bodyParser.json())
 
 //Mongoose setup --> 
-mongoose.connect(process.env.MONGODB_URI||'mongodb://localhost/citiesDB', {useNewUrlParser:true},() => console.log ("DB-connection-up"))
+mongoose.connect(process.env.MONGODB_URI ||'mongodb://localhost/citiesDB', {useNewUrlParser:true},() => console.log ("DB-connection-up"))
 
 //Serving files
 server.use(express.static(path.join(__dirname,`./dist` )))
@@ -21,4 +21,4 @@ server.use('/', api)
 
 //Server running confirmation:
 server.get('/status', (req, res) => res.send('Still alive!'))
-server.listen(process.env.port || PORT, () => console.log(`Up-and-running in port: ${PORT} `))
+server.listen(process.env.PORT || PORT, () => console.log(`Up-and-running in port: ${PORT} `))
