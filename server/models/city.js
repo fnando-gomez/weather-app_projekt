@@ -8,7 +8,8 @@ const citySchema = new Schema({
     humidity: Number,
     feelslike:Number,
     condition: String,
-    conditionPic: String
+    conditionPic: String,
+    saved:Boolean
 })
 
 const City = mongoose.model('city', citySchema)// City model of citySchema

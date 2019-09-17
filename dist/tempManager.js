@@ -14,16 +14,22 @@ class Tempmanager {
         this.cityData.unshift(Data)
     }
 
-    saveCity(cityName){
+    async saveCity(cityName){
         let foundCity = this.cityData.find(c => c.name === cityName)
-        $.post('/city', foundCity, () => console.log(`Sending city: ${foundCity} `))
+        foundCity.saved = true
+       await $.post('/city', foundCity, () => console.log(`Sending city: ${foundCity} `))
+
     }
 
-    removeCity(cityName){
-            $.ajax({
+    async removeCity(cityName){
+            await $.ajax({
                 url: `city/${cityName}`,
                 method: "Delete",
-                success:()=>console.log(`${cityName} just deleted`)
+                success:()=>{
+                let i = this.cityData.findIndex(c => c.name === cityName)
+                    this.cityData.splice(i,1)
+                    console.log(`${cityName} just deleted`)
+            }
             })
             
     }

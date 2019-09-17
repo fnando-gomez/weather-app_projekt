@@ -15,14 +15,17 @@ const handleSearch = async function(){
     render.renderCities(tempmanager.cityData)
 }
 
-$('body').on('click','.saveButton', function(){
+$('body').on('click','#saveButton', function(){
     let citytoSave = $(this).siblings('.name').text()
     console.log(citytoSave)
     tempmanager.saveCity(citytoSave)
+    render.renderCities(tempmanager.cityData)
 })
 
-$('body').on('click','.deleteButton', function(){
+$('body').on('click','#deleteButton', async function(){
     let citytoDelete = $(this).siblings('.name').text()
     console.log(citytoDelete)
-    tempmanager.removeCity(citytoDelete)
+    await tempmanager.removeCity(citytoDelete)
+    $(this).closest('.city').empty()
+    render.renderCities(tempmanager.cityData)
 })

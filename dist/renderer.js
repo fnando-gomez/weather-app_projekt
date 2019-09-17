@@ -6,5 +6,7 @@ class Renderer{
         let template = Handlebars.compile(source)
         let newHTML = template ({cityData})
         $('#container').append(newHTML)
+        $('#city_search').val("")
+
     }
 }

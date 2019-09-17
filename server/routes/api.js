@@ -3,6 +3,7 @@ const router = express.Router()
 const request = require ('request')
 const moment = require ('moment')
 const City = require ('../models/city')
+// moment.locale('es')
 
 //Connecting & getting useful data from the API(weatherstack) 
 router.get('/city/:cityName', function (req, res) {
@@ -13,7 +14,7 @@ router.get('/city/:cityName', function (req, res) {
         let fulldataCity = JSON.parse(body)
         let dataCity = {
             name: fulldataCity.location.name,
-            updateAt: new Date,
+            updateAt: Date(Date.now()),
             temperature: fulldataCity.current.temperature,
             humidity: fulldataCity.current.humidity,
             feelslike:fulldataCity.current.feelslike,

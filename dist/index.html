@@ -6,17 +6,20 @@
         <title>Weather App </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="style.css">
     </head>
     <body onload = loadPage()>
 
         
-        <h1>Weather - app</h1>
+        <div class="title"  ><font size="+4">Weather channel</font></div>
+        <h3>Official real time app ®</h3>
         <div id="search_area">
             <input type="text" size="25" id="city_search" name="Search" placeholder="City">
-            <button onclick=handleSearch()>Get Weather</button>
+            <button class="btn" size="35" onclick=handleSearch()>Get Weather  <i class="material-icons">cloud</i></button>
         </div>  
-
+        
         <div id="container"></div>
         
         <script src="https://code.jquery.com/jquery-3.3.1.js" crossorigin=“anonymous”></script>
@@ -30,17 +33,20 @@
             <div class="city">
                 <h4 class="name">{{name}}</h4>
                 <img src={{conditionPic}} alt="Weather now">
+                <hr>
                 <h4 class="temp">Temperature:{{temperature}} º</h4>
-                <h4 class="humidity">Humidity:{{humidity}}%</h4>
+                <h4 class="humidity">Humidity:{{humidity}} %</h4>
                 <h4 class="condition">Actual condition:{{condition}}</h4>
                 <h4 class="thermal">Thermal sensation:{{feelslike}}º</h4>
                 <h4 class="updated">Last update: {{updateAt}}</h4>
-                <button class="saveButton">Save</button>
-                <button class="deleteButton">Delete</button>
+                
+                {{#if saved}}
+                <button id="deleteButton" class="btn">Delete <i class="material-icons">delete_forever</i></button>
+                {{else}}
+                <button id="saveButton" class="btn">Add <i class="material-icons">favorite</i></button>
+                {{/if}}
             </div>
-            {{/each}}
-        
-        
+            {{/each}} 
         </script>
 
 </html>
