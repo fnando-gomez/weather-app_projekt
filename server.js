@@ -14,6 +14,7 @@ mongoose.connect(process.env.MONGODB_URI ||'mongodb://localhost/citiesDB', {useN
 
 //Serving files
 server.use(express.static(path.join(__dirname,`./dist` )))
+server.use(express.static(path.join(__dirname,`./node_modules`)))
 
 //Taking routes from here:
 server.use('/', api)
