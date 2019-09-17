@@ -10,7 +10,7 @@ server.use(bodyParser.urlencoded({ extended: false }))
 server.use(bodyParser.json())
 
 //Mongoose setup --> 
-mongoose.connect("mongodb://localhost/citiesDB", {useNewUrlParser:true, useFindAndModify:false, useUnifiedTopology: true },() => console.log ("DB-connection-up"))
+mongoose.connect(process.env.MONGODB_URI||'mongodb://localhost/citiesDB', {useNewUrlParser:true, useFindAndModify:false, useUnifiedTopology: true },() => console.log ("DB-connection-up"))
 
 //Serving files
 server.use(express.static(path.join(__dirname,`./dist` )))
