@@ -9,7 +9,6 @@ const loadPage = async function(){
 
 const handleSearch = async function(){
     let input = $("#city_search").val()
-    console.log(tempmanager.cityData)
     await tempmanager.getCityData(input)
     console.log(tempmanager.cityData)
     render.renderCities(tempmanager.cityData)
